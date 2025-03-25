@@ -1,0 +1,739 @@
+:root {
+    --primary-orange: #ff6600;
+    --secondary-grey: #2e2e2e;
+    --accent-blue: #008CFF;
+}
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--secondary-grey);
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.wrapper {
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+.recipe-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    object-fit: cover;
+    display: block;
+    margin: 10px auto;
+    border: 2px solid rgba(255, 102, 0, 0.7); /* Subtle orange border */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, filter 0.3s ease-in-out;
+    filter: brightness(0.95) saturate(1.1);
+
+    /* Improved Box Shadow */
+    box-shadow: 0px 4px 8px rgba(255, 102, 0, 0.3), 
+                0px 2px 5px rgba(0, 140, 255, 0.25), 
+                inset 0px 1px 2px rgba(255, 255, 255, 0.3); /* Soft inner glow */
+}
+
+.recipe-img:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 6px 12px rgba(255, 102, 0, 0.5), 
+                0px 3px 8px rgba(0, 140, 255, 0.35), 
+                inset 0px 2px 4px rgba(255, 255, 255, 0.4); /* Slightly stronger glow on hover */
+    filter: brightness(1.05) saturate(1.2);
+}
+
+/* Click Animation */
+@keyframes popBounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+.recipe-img:active {
+    animation: popBounce 0.3s ease-in-out;
+}
+
+
+/* Header */
+header h1 {
+    color: var(--primary-orange);
+}
+
+/* Search Button */
+.search-btn {
+    background: var(--primary-orange);
+}
+
+/* Filters */
+.filters button {
+    background: var(--primary-orange);
+}
+
+/* Load More Button */
+.load-more-btn {
+    background: var(--primary-orange);
+}
+
+/* Carousel Container */
+.carousel-container {
+    background: var(--accent-blue);
+}
+
+/* Modal */
+.modal-content {
+    background: var(--secondary-grey);
+    box-shadow: 0px 5px 15px rgba(255, 102, 0, 0.6);
+}
+
+/* Close Button */
+.modal-close {
+    background: var(--primary-orange);
+}
+
+.modal-close:hover {
+    background: #cc5200;
+}
+.image-one {
+    width: 80px; /* Small but visible */
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover; /* Ensures image is properly cropped */
+    display: block;
+    margin: 10px auto; /* Centers the image */
+    box-shadow: 0px 4px 10px rgba(255, 102, 0, 0.5); /* Orange glow */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.image-one:hover {
+    transform: scale(1.1) rotate(3deg); /* Slight zoom and rotation */
+    box-shadow: 0px 8px 20px rgba(255, 102, 0, 0.8), 
+                0px 4px 15px rgba(0, 140, 255, 0.6); /* Orange and blue glow */
+}
+
+/* Animation */
+@keyframes popEffect {
+    0% {
+        transform: scale(1);
+        box-shadow: 0px 4px 10px rgba(255, 102, 0, 0.5);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0px 6px 15px rgba(255, 102, 0, 0.7);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0px 4px 10px rgba(255, 102, 0, 0.5);
+    }
+}
+
+.image-one:active {
+    animation: popEffect 0.4s ease-in-out;
+}
+
+
+/* Modal Button */
+.modal-button {
+    background: var(--primary-orange);
+}
+
+.modal-button:hover {
+    background: #cc5200;
+}
+
+
+.wrapper {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+header h1 {
+    font-size: 2em;
+    color: #ff6347;
+    margin-bottom: 20px;
+}
+
+/* Search Section */
+.search-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.search-btn {
+    padding: 10px 15px;
+    background: #ff6347;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+/* Carousel */
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.carousel-items {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    width: 80%;
+    padding: 10px;
+    gap: 10px;
+}
+
+.carousel-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Dish Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    width: 50%;
+    margin: 10% auto;
+    border-radius: 10px;
+}
+
+.modal-close {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Filters */
+.filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filters button {
+    background: #ff6347;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Dish Gallery */
+.dish-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.grid-container img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* View More Button */
+.load-more-btn {
+    background: #ff6347;
+    color: white;
+    
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+/* ------------------------------------------ */
+/* Carousel Container */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* Adjust width as needed */
+    background: #008CFF; /* Blue background */
+    padding: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: auto;
+}
+
+/* Title */
+.carousel-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 10px;
+}
+
+/* Scrollable Image Wrapper */
+.carousel {
+    display: flex;
+    gap: 15px;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Individual Circular Images */
+.scroll-image {
+    width: 100px; /* Adjust image size */
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s;
+
+
+}
+
+
+
+#carouselItems::-webkit-scrollbar{
+    display: none;
+}
+.scroll-image:hover {
+    transform: scale(1.1);
+}
+
+/* Left & Right Buttons */
+.carousel-btn1 {
+    position: absolute;
+    left: 89%;
+    top: 37%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+}
+.carousel-btn2 {
+    position: absolute;
+    right: 89%;
+    top: 37%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+
+
+/* Dish Grid Layout */
+#dishGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 30px;
+    max-width: 1300px;
+    margin: auto;
+}
+
+/* Grid Container */
+.grid-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
+    cursor: pointer;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.grid-container:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.25);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Dish Images */
+#dishGrid img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 18px;
+    transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out, filter 0.3s ease-in-out;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    filter: brightness(0.92) saturate(1.1);
+}
+
+#dishGrid img:hover {
+    transform: scale(1.07);
+    box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.3);
+    filter: brightness(1) saturate(1.3);
+}
+
+/* Subtle Overlay Effect */
+.grid-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 18px;
+}
+
+.grid-container:hover::before {
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #dishGrid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+
+    #dishGrid img {
+        height: 200px;
+    }
+}
+/* Popup Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dark transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* Popup Box */
+.modal-content {
+    background: #2e2e2e; /* Dark Grey */
+    padding: 15px;
+    width: 280px; /* Compact but readable */
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0px 5px 15px rgba(255, 102, 0, 0.6); /* Orange glow */
+}
+
+/* Close Button */
+.modal-close {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    color: white;
+    background: rgba(255, 102, 0, 0.8);
+    padding: 5px 8px;
+    border-radius: 50%;
+    border: none;
+    transition: 0.3s;
+}
+
+.modal-close:hover {
+    background: #ff6600;
+}
+
+/* Image */
+.modal-image {
+    width: 80px; /* Small but visible */
+    height: 80px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Title */
+.modal-content h2 {
+    color: #ff6600; /* Orange */
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+/* Text */
+.modal-content p {
+    color: white;
+    font-size: 13px;
+    margin: 5px 0;
+}
+
+/* Button */
+.modal-button {
+    background: #ff6600;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.modal-button:hover {
+    background: #cc5200;
+}
+.dish-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.recipe-title {
+    position: absolute;
+    top: 70%; /* Start position (lower) */
+    left: 0%;
+    background: rgba(0, 0, 0, 0.7); 
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    
+    opacity: 0; /* Initially hidden */
+    transform: translateY(10px); /* Start slightly lower */
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.dish-card:hover .recipe-title {
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Move to normal position */
+}
+
+
+
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #ff6600; /* Change color as needed */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+/* Loader Styles */
+#loader {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top: 5px solid #ff9800;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 1000;
+}
+
+/* Smooth Fade-In Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.9); }
+}
+
+/* Recipe Scroll Container */
+.recipe-scroll-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Carousel Wrapper */
+.carousel-items {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+    padding: 10px;
+    max-width: 600px;
+    scrollbar-width: none; /* Hide scrollbar for modern browsers */
+}
+
+/* Hide scrollbar for WebKit browsers */
+.carousel-items::-webkit-scrollbar {
+    display: none;
+}
+
+/* Scroll Buttons */
+.scroll-btn {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    font-size: 24px;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.scroll-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Left & Right Button Positioning */
+#leftarrow {
+    position: absolute;
+    left: 0;
+    top: 30%;
+    z-index: 10;
+}
+
+#rightarrow {
+    position: absolute;
+    right: 20%;
+    top: 9%;
+    z-index: 10;
+}
+
+/* Images Inside Carousel */
+.carousel-items img {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.carousel-items img:hover {
+    transform: scale(1.1);
+}
+
+/* Filter Button Container */
+#filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  /* Individual Filter Buttons */
+  #filter-buttons button {
+    background: #ff6600; /* Bright Orange */
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+  }
+  
+  #filter-buttons button:hover {
+    background: #cc5200; /* Darker Orange */
+  }
+  
+  #filter-buttons button:active {
+    background: #b34700; /* Even Darker Orange */
+  }
+  
+  /* Active Filter Button */
+  #filter-buttons button.active {
+    background: #666; /* Grey */
+    color: white;
+  }
+  .scroll-message {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ff6600; /* Bright Orange */
+    background: #f2f2f2; /* Light Grey */
+    padding: 10px 10px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    width: fit-content;
+    margin: 10px auto;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .scroll-message:hover {
+    transform: scale(1.05);
+    background: #e6e6e6; /* Slightly Darker Grey */
+  }
+  .recipe-scroll-container {
+    width: 100%;
+    overflow: hidden;
+    background: black; /* Light Grey */
+    padding: 10px 0;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .carousel-items {
+    display: flex;
+    gap: 15px;
+    animation: scroll-left 30s linear infinite;
+    white-space: nowrap;
+  }
+  
+  .carousel-items img {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.1s ease-in-out;
+  }
+  
+  .carousel-items img:hover {
+    transform: scale(1.1);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  #carouselItems img{
+    width: 100%;
+  }
+  
+
