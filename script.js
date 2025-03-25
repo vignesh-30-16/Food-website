@@ -1,17 +1,16 @@
-// document.addEventListener("DOMContentLoaded", function (e) {
-  // e.preventDefault()
-  let scrollimg = document.getElementById("carouselItems");
-  let modelimg = document.getElementById("dishGrid");
-  let content = document.getElementById("wrapper");
-  let load=document.getElementById("loader")
-  let all = ['All'];
+
+  let ScrollImg = document.getElementById("carouselItems");
+  let ModelImg = document.getElementById("dishGrid");
+  let Content = document.getElementById("wrapper");
+  let Load=document.getElementById("Loader")
+  let All = ['All'];
   
   // Get method
-  function getmethod() {
+  function GetMethod() {
    
-    let load=document.getElementById("loader")
+    // let Load=document.getElementById("Loader")
   
-    load.style.display="block"
+    Load.style.display="block"
     fetch(
       `https://api.spoonacular.com/recipes/random?apiKey=87d2995f1c51459eb9d7413a1be769b5&number=20`
     )
@@ -20,42 +19,37 @@
         console.log(data);
         
           // Scroll image
-          load.style.display="none"
+          Load.style.  display="none"
           data.recipes.forEach((scroll) => {
               let img = document.createElement("img");
               img.src = scroll.image;
               img.classList.add("scroll-image");
-              scrollimg.appendChild(img);
+              ScrollImg.appendChild(img);
             });
       
       })
     }
   
-  getmethod();
+  GetMethod();
   // View more button
-  let loadmore=document.getElementById("loadMore")
-  loadmore.addEventListener("click",(e)=> {  
+  let Loadmore=document.getElementById("loadMore")
+  Loadmore.addEventListener("click",(e)=> {  
     
     e.preventDefault()
-    // getmethod()
-    // items()
-    // getmethod()
-    load.style.display="block"
+
+    Load.style.display="block"
     fetch(
       `https://api.spoonacular.com/recipes/random?apiKey=87d2995f1c51459eb9d7413a1be769b5&number=20`
     )
     .then((response) => response.json())
     .then((data) => {
-      load.style.display="none"
+      Load.style.display="none"
         let recipes = data.recipes;
   
-        // Clear previous dishes
-        // modelimg.innerHTML = "";
-  
-        // Display new dishes
+
         recipes.forEach((recipe) => {
-            let dishCard = document.createElement("div");
-            dishCard.classList.add("dish-card");
+            let DishCard = document.createElement("div");
+            DishCard.classList.add("dish-card");
   
             let img = document.createElement("img");
             img.src = recipe.image;
@@ -66,35 +60,35 @@
             p.textContent = recipe.title;
             p.classList.add("recipe-title");
   
-            dishCard.appendChild(img);
-            dishCard.appendChild(p);
-            modelimg.appendChild(dishCard);
+            DishCard.appendChild(img);
+            DishCard.appendChild(p);
+            ModelImg.appendChild(DishCard);
   
         })
       })
 })
-  function items(cuisine) {
-    // // let load = document.getElementById("loader");
-    let filterbtn = document.getElementById("filter-buttons");
-    let modelimg = document.getElementById("dishGrid");
+  function Items(cuisine) {
+
+    let CountryBtn = document.getElementById("filter-buttons");
+    let ModelImg = document.getElementById("dishGrid");
   
-    // // load.style.display = "block"; // Show loader
-  load.style.display="block"
+   
+  Load.style.display="block"
     fetch(
       `https://api.spoonacular.com/recipes/random?apiKey=87d2995f1c51459eb9d7413a1be769b5&number=20&cuisine=${cuisine}`
     )
     .then((response) => response.json())
     .then((data) => {
-      load.style.display="none"
+      Load.style.display="none"
         let recipes = data.recipes;
   
-        // Clear previous dishes
-        modelimg.innerHTML = "";
+        
+        ModelImg.innerHTML = "";
   
-        // Display new dishes
+     
         recipes.forEach((recipe) => {
-            let dishCard = document.createElement("div");
-            dishCard.classList.add("dish-card");
+            let DishCard = document.createElement("div");
+            DishCard.classList.add("dish-card");
   
             let img = document.createElement("img");
             img.src = recipe.image;
@@ -105,27 +99,25 @@
             p.textContent = recipe.title;
             p.classList.add("recipe-title");
   
-            dishCard.appendChild(img);
-            dishCard.appendChild(p);
-            modelimg.appendChild(dishCard);
+            DishCard.appendChild(img);
+            DishCard.appendChild(p);
+            ModelImg.appendChild(DishCard);
   
             img.addEventListener("click", () => {
-              // load.style.display="block"
-              
-
-                // load.style.display="none"
-                let content = document.getElementById("wrapper");
-                let maindiv = document.createElement("div");
-                maindiv.classList.add("modal-overlay");
-                maindiv.classList.add("show"); 
+   
+                let Content = document.getElementById("wrapper");
+                let MainDiv = document.createElement("div");
+                MainDiv.style.backgroundColor="grey"
+                MainDiv.classList.add("modal-overlay");
+                MainDiv.classList.add("show"); 
       
-                let seconddiv = document.createElement("div");
-                seconddiv.classList.add("modal-content");
+                let SceondDiv = document.createElement("div");
+                SceondDiv.classList.add("modal-content");
       
-                let fullimg = document.createElement("img");
-                fullimg.src = recipe.image;
-                fullimg.alt = recipe.title;
-                fullimg.classList.add("image-one");
+                let img = document.createElement("img");
+                img.src = recipe.image;
+                img.alt = recipe.title;
+                img.classList.add("image-one");
       
                 let title = document.createElement("h2");
                 title.textContent = recipe.title;
@@ -140,80 +132,79 @@
                 closeButton.textContent = "X";
                 closeButton.classList.add("modal-close");
                 closeButton.addEventListener("click", () => {
-                  maindiv.remove();
+                  MainDiv.remove();
                 });
-                // load.style.display="none"
+
       
-                seconddiv.appendChild(fullimg);
-                seconddiv.appendChild(title);
-                seconddiv.appendChild(veg);
-                seconddiv.appendChild(summary);
-                maindiv.appendChild(closeButton);
-                maindiv.appendChild(seconddiv);
-                content.appendChild(maindiv);
+                SceondDiv.appendChild(img);
+                SceondDiv.appendChild(title);
+                SceondDiv.appendChild(veg);
+                SceondDiv.appendChild(summary);
+                MainDiv.appendChild(closeButton);
+                MainDiv.appendChild(SceondDiv);
+                Content.appendChild(MainDiv);
               });
             });
-        // Update filter buttons only if new cuisines are found
+
         recipes.forEach((recipe) => {
             recipe.cuisines.forEach((elemen) => {
-                if (!all.includes(elemen)) {
-                    all.push(elemen);
+                if (!All.includes(elemen)) {
+                    All.push(elemen);
                 }
             });
         });
   
-        // Clear and re-add filter buttons
-        filterbtn.innerHTML = ""; 
-        all.forEach((valueitem) => {
+   
+        CountryBtn.innerHTML = ""; 
+        All.forEach((valueitem) => {
             let valueItem = document.createElement("button");
             valueItem.textContent = valueitem;
-            valueItem.onclick = () => items(valueitem);
-            filterbtn.appendChild(valueItem);
+            valueItem.onclick = () => Items(valueitem);
+            CountryBtn.appendChild(valueItem);
         });
   
-        // // load.style.display = "none"; // Hide loader
+       
     })
   
   }
   
-items()
+Items()
   
   
   // Search bar 
-  let searchBtn = document.getElementById("searchbutton");
+  let SearchBtn = document.getElementById("searchbutton");
   
-  function searchdiv() {
-    // load.style.display="block"
-    // load()
+  function SearchDiv() {
+
     
-    let searchValue = searchBox.value.trim().toLowerCase();
-    let menuTitles = document.getElementsByClassName("recipe-title");
+    let SearchValue = searchBox.value.trim().toLowerCase();
+    let MenuTitles = document.getElementsByClassName("recipe-title");
   
-    for (let i = 0; i < menuTitles.length; i++) {
-      let foodItem = menuTitles[i].textContent.toLowerCase();
-      let parentDish = menuTitles[i].parentElement;
+    for (let i = 0; i < MenuTitles.length; i++) {
+      let FoodItem = MenuTitles[i].textContent.toLowerCase();
+      let ParentDish = MenuTitles[i].parentElement;
   
-      if (foodItem.includes(searchValue)) {
+      if (FoodItem.includes(SearchValue)) {
         
-        parentDish.style.display = "block";
+        ParentDish.style.display = "block";
     
       
-        console.log("yes items is avalib;e");
+        console.log("yes Items is avalib;e");
       } else {
-        parentDish.style.display = "none";
-        // parentDish.textContent="Food Not found"
+        ParentDish.style.display = "none";
+        
         console.log("fwefwefewfwe");
       }
-      // load.style.display="none"
+ 
     }
   }
-  // Search bar button event
-  searchBtn.addEventListener("click", function (e) {
+ 
+  SearchBtn.addEventListener("click", function (e) {
     e.preventDefault();
   
   
-    searchdiv();
-    // load1()
+    SearchDiv();
+    
     
   });
   

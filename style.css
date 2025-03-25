@@ -220,13 +220,8 @@ header h1 {
     background: rgba(0, 0, 0, 0.5);
 }
 
-.modal-content {
-    background: white;
-    padding: 20px;
-    width: 50%;
-    margin: 10% auto;
-    border-radius: 10px;
-}
+
+
 
 .modal-close {
     float: right;
@@ -431,7 +426,7 @@ header h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Dark transparent background */
+    background: rgba(0, 0, 0, 0.9); /* Dark transparent background */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -440,7 +435,8 @@ header h1 {
 
 /* Popup Box */
 .modal-content {
-    background: #2e2e2e; /* Dark Grey */
+    width: 50%;
+    background-color: #2e2e2e; /* Dark Grey */
     padding: 15px;
     width: 280px; /* Compact but readable */
     border-radius: 10px;
